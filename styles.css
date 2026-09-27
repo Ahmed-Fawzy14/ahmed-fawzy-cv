@@ -206,9 +206,9 @@ p:last-child {
 .hero-grid {
   position: relative;
   display: grid;
-  grid-template-columns: minmax(0, 1.28fr) minmax(320px, 0.72fr);
+  grid-template-columns: minmax(0, 1.22fr) minmax(350px, 0.78fr);
   align-items: center;
-  gap: clamp(60px, 9vw, 120px);
+  gap: clamp(50px, 8vw, 105px);
 }
 
 .eyebrow,
@@ -341,7 +341,7 @@ p:last-child {
 
 .portrait-frame {
   position: relative;
-  width: min(100%, 380px);
+  width: min(100%, 430px);
   padding: 18px;
   background: var(--white);
   border: 1px solid var(--grey-200);
@@ -911,8 +911,8 @@ p:last-child {
   }
 
   .hero-grid {
-    grid-template-columns: minmax(0, 1.15fr) minmax(260px, 0.65fr);
-    gap: 54px;
+    grid-template-columns: minmax(0, 1.1fr) minmax(300px, 0.75fr);
+    gap: 40px;
   }
 
   .hero h1 {
@@ -962,7 +962,7 @@ p:last-child {
   }
 
   .portrait-column {
-    width: min(86%, 370px);
+    width: min(94%, 410px);
     justify-self: center;
   }
 
