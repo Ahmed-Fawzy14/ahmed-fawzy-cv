@@ -607,20 +607,23 @@ p:last-child {
   height: 72px;
   flex: 0 0 120px;
   place-items: center;
+  overflow: hidden;
   padding: 10px;
   background: var(--white);
   border: 1px solid rgba(255, 255, 255, 0.18);
   border-radius: 12px;
 }
 
-.organization-logo-dark {
-  background: #344255;
-}
-
 .organization-logo img {
-  width: 100%;
+  width: auto;
+  height: auto;
+  min-width: 0;
+  min-height: 0;
+  max-width: 100%;
   max-height: 100%;
   object-fit: contain;
+  object-position: center;
+  border-radius: 7px;
 }
 
 .timeline-content .company {
@@ -687,6 +690,7 @@ p:last-child {
   height: 72px;
   flex: 0 0 88px;
   place-items: center;
+  overflow: hidden;
   padding: 7px;
   background: var(--white);
   border: 1px solid var(--grey-200);
@@ -700,9 +704,15 @@ p:last-child {
 }
 
 .activity-logo img {
-  width: 100%;
+  width: auto;
+  height: auto;
+  min-width: 0;
+  min-height: 0;
+  max-width: 100%;
   max-height: 100%;
   object-fit: contain;
+  object-position: center;
+  border-radius: 7px;
 }
 
 .activity-card .item-label {
