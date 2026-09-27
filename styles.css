@@ -585,6 +585,44 @@ p:last-child {
   letter-spacing: -0.03em;
 }
 
+.experience-heading {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 24px;
+  margin-bottom: 15px;
+}
+
+.experience-heading > div:first-child {
+  min-width: 0;
+}
+
+.experience-heading .company {
+  margin-bottom: 0;
+}
+
+.organization-logo {
+  display: grid;
+  width: 120px;
+  height: 72px;
+  flex: 0 0 120px;
+  place-items: center;
+  padding: 10px;
+  background: var(--white);
+  border: 1px solid rgba(255, 255, 255, 0.18);
+  border-radius: 12px;
+}
+
+.organization-logo-dark {
+  background: #344255;
+}
+
+.organization-logo img {
+  width: 100%;
+  max-height: 100%;
+  object-fit: contain;
+}
+
 .timeline-content .company {
   margin-bottom: 15px;
   color: #91a8ef;
@@ -604,6 +642,89 @@ p:last-child {
 }
 
 .timeline-content li::marker {
+  color: var(--royal-blue);
+}
+
+/* ---------- Extracurricular activities ---------- */
+.activities {
+  background: var(--white);
+}
+
+.activity-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 22px;
+}
+
+.activity-card {
+  padding: 34px;
+  background: var(--grey-50);
+  border: 1px solid var(--grey-200);
+  border-radius: var(--radius-medium);
+}
+
+.activity-topline {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 24px;
+  margin-bottom: 34px;
+}
+
+.activity-topline > span {
+  padding-top: 5px;
+  color: var(--grey-600);
+  font-size: 0.75rem;
+  font-weight: 800;
+  letter-spacing: 0.05em;
+  text-align: right;
+  text-transform: uppercase;
+}
+
+.activity-logo {
+  display: grid;
+  width: 88px;
+  height: 72px;
+  flex: 0 0 88px;
+  place-items: center;
+  padding: 7px;
+  background: var(--white);
+  border: 1px solid var(--grey-200);
+  border-radius: 12px;
+}
+
+.activity-logo-wide {
+  width: 126px;
+  flex-basis: 126px;
+  padding: 12px;
+}
+
+.activity-logo img {
+  width: 100%;
+  max-height: 100%;
+  object-fit: contain;
+}
+
+.activity-card .item-label {
+  margin-bottom: 10px;
+}
+
+.activity-card h3 {
+  margin-bottom: 22px;
+  font-size: clamp(1.45rem, 2.7vw, 2.15rem);
+  line-height: 1.12;
+  letter-spacing: -0.04em;
+}
+
+.activity-card ul {
+  display: grid;
+  gap: 9px;
+  margin: 0;
+  padding-left: 19px;
+  color: var(--grey-700);
+}
+
+.activity-card li::marker {
   color: var(--royal-blue);
 }
 
@@ -641,6 +762,15 @@ p:last-child {
 .project-card-featured:hover {
   border-color: var(--royal-blue);
   box-shadow: 0 22px 50px rgba(65, 105, 225, 0.28);
+}
+
+.project-card-wide {
+  grid-column: 1 / -1;
+  min-height: 360px;
+}
+
+.project-card-wide > div:nth-child(2) {
+  max-width: 780px;
 }
 
 .project-topline {
@@ -707,6 +837,39 @@ p:last-child {
   margin: 34px 0 0;
   padding: 0;
   list-style: none;
+}
+
+.project-footer {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: 18px;
+  margin-top: 34px;
+}
+
+.project-footer .tag-list {
+  margin-top: 0;
+}
+
+.repo-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  padding: 8px 12px;
+  color: var(--royal-blue);
+  background: rgba(65, 105, 225, 0.08);
+  border-radius: 999px;
+  font-size: 0.75rem;
+  font-weight: 800;
+  white-space: nowrap;
+  transition: color 180ms ease, background 180ms ease, transform 180ms ease;
+}
+
+.repo-link:hover {
+  color: var(--white);
+  background: var(--royal-blue);
+  transform: translateY(-2px);
 }
 
 .tag-list li {
@@ -1001,8 +1164,13 @@ p:last-child {
   }
 
   .project-grid,
+  .activity-grid,
   .achievement-grid {
     grid-template-columns: 1fr;
+  }
+
+  .project-card-wide {
+    grid-column: auto;
   }
 
   .project-card {
@@ -1055,6 +1223,20 @@ p:last-child {
   .project-card,
   .achievement-card {
     padding: 25px;
+  }
+
+  .activity-card {
+    padding: 25px;
+  }
+
+  .experience-heading {
+    gap: 14px;
+  }
+
+  .organization-logo {
+    width: 96px;
+    height: 60px;
+    flex-basis: 96px;
   }
 
   .contact-links a {
