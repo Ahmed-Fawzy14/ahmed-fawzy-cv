@@ -1336,6 +1336,13 @@ section[id] { scroll-margin-top: 100px; }
 }
 .theme-toggle { white-space: nowrap; }
 .section-toggle { margin-top: 24px; }
+.intro-controls { position: relative; z-index: 1; display: flex; justify-content: flex-end; margin-bottom: 24px; }
+.intro-controls .section-toggle { margin-top: 0; }
+.section.is-collapsed { padding: 48px 0; }
+.section.is-collapsed .section-heading { margin-bottom: 0; }
+.hero.is-collapsed { padding: 24px 0; }
+.hero.is-collapsed .intro-controls { margin-bottom: 0; }
+.contact-section.is-collapsed { padding: 48px 0; }
 .detail-toggle { margin: 8px 0 0; }
 .theme-toggle:hover, .section-toggle:hover, .detail-toggle:hover {
   border-color: var(--royal-blue);
@@ -1385,8 +1392,7 @@ section[id] { scroll-margin-top: 100px; }
 .skill-input-row { display: flex; gap: 12px; }
 .skill-input-row input { flex: 1; width: 100%; }
 .skill-input-row .button { flex-shrink: 0; }
-.added-skills { margin-top: 18px; }
-.added-skills:empty { display: none; }
+.skill-group p { overflow-wrap: anywhere; }
 .contact-form {
   margin-top: 64px;
   padding: clamp(24px, 4vw, 44px);
@@ -1471,7 +1477,9 @@ html[data-theme="dark"] .contact-section .contact-form #contact-feedback:not(.is
     --grey-50: #f8fafc;
     color-scheme: light;
   }
-  .welcome-banner, .section-toggle, .detail-toggle, .skill-playground, .contact-form { display: none !important; }
+  .welcome-banner, .intro-controls, .section-toggle, .detail-toggle, .skill-playground, .contact-form { display: none !important; }
+  [data-collapsible-panel][hidden] { display: block !important; }
+  :is(.hero-grid, .activity-grid, .project-grid, .achievement-grid, .contact-links)[data-collapsible-panel][hidden] { display: grid !important; }
   #skills-content[hidden], #achievements-content[hidden], .project-details[hidden] { display: block !important; }
   #achievements-content { display: grid !important; }
   html[data-theme] :is(body, .hero, .section, .contact-section, .project-card, .achievement-card, .activity-card, .portrait-frame) {

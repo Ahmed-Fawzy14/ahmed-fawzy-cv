@@ -40,7 +40,10 @@
 
     <main id="main-content">
       <section class="hero" id="top" aria-labelledby="hero-title">
-        <div class="container hero-grid">
+        <div class="container intro-controls">
+          <button class="section-toggle" type="button" aria-expanded="true" aria-controls="introduction-content" data-label="introduction" hidden>Hide introduction</button>
+        </div>
+        <div class="container hero-grid" id="introduction-content" data-collapsible-panel>
           <div class="hero-copy">
             <div class="welcome-banner" id="welcome-banner" hidden>
               <p id="welcome-message" role="status"></p>
@@ -101,9 +104,10 @@
           <div class="section-heading">
             <p class="section-number">01 / Profile</p>
             <h2 id="about-title">Engineering thoughtful solutions at the intersection of AI and software.</h2>
+            <button class="section-toggle" type="button" aria-expanded="true" aria-controls="profile-content" data-label="profile" hidden>Hide profile</button>
           </div>
 
-          <div class="about-copy">
+          <div class="about-copy" id="profile-content" data-collapsible-panel>
             <p class="lead">
               I am a Computer Engineering student at The American University in Cairo,
               specializing in Artificial Intelligence.
@@ -129,11 +133,12 @@
             <div>
               <p class="section-number">02 / Education</p>
               <h2 id="education-title">Academic foundation</h2>
+              <button class="section-toggle" type="button" aria-expanded="true" aria-controls="education-content" data-label="education" hidden>Hide education</button>
             </div>
             <p class="section-note">A focused path in computer engineering and artificial intelligence.</p>
           </div>
 
-          <div class="education-list">
+          <div class="education-list" id="education-content" data-collapsible-panel>
             <article class="education-item">
               <div class="education-year">2022 - 2027</div>
               <div>
@@ -169,11 +174,12 @@
             <div>
               <p class="section-number">03 / Work Experience</p>
               <h2 id="experience-title">Engineering in practice</h2>
+              <button class="section-toggle" type="button" aria-expanded="true" aria-controls="experience-content" data-label="experience" hidden>Hide experience</button>
             </div>
             <p class="section-note">Professional experience spanning AI, DevOps, finance, and cloud infrastructure.</p>
           </div>
 
-          <div class="timeline">
+          <div class="timeline" id="experience-content" data-collapsible-panel>
             <article class="timeline-item">
               <div class="timeline-marker" aria-hidden="true"></div>
               <div class="timeline-meta">
@@ -254,11 +260,12 @@
             <div>
               <p class="section-number">04 / Extracurricular Activities</p>
               <h2 id="activities-title">Leadership beyond the classroom</h2>
+              <button class="section-toggle" type="button" aria-expanded="true" aria-controls="activities-content" data-label="activities" hidden>Hide activities</button>
             </div>
             <p class="section-note">Leading people, systems, and projects across the AUC community.</p>
           </div>
 
-          <div class="activity-grid">
+          <div class="activity-grid" id="activities-content" data-collapsible-panel>
             <article class="activity-card">
               <div class="activity-topline">
                 <div class="activity-logo">
@@ -300,11 +307,12 @@
             <div>
               <p class="section-number">05 / Selected Projects</p>
               <h2 id="projects-title">From research to real systems</h2>
+              <button class="section-toggle" type="button" aria-expanded="true" aria-controls="projects-content" data-label="projects" hidden>Hide projects</button>
             </div>
             <p class="section-note">Selected work in AI, systems engineering, and product development.</p>
           </div>
 
-          <div class="project-grid">
+          <div class="project-grid" id="projects-content" data-collapsible-panel>
             <article class="project-card project-card-featured">
               <div class="project-topline">
                 <span class="project-index">01</span>
@@ -474,7 +482,7 @@
             </p>
           </div>
 
-          <div class="skills-content" id="skills-content">
+          <div class="skills-content" id="skills-content" data-collapsible-panel>
           <div class="skills-grid">
             <article class="skill-group">
               <span class="skill-number">01</span>
@@ -499,10 +507,15 @@
               <h3>DevOps &amp; Cloud</h3>
               <p>Docker · Kubernetes · AWS · Terraform · Jenkins · Prometheus · Grafana</p>
             </article>
+            <article class="skill-group" id="additional-skills" hidden>
+              <span class="skill-number">05</span>
+              <h3>Additional Skills</h3>
+              <p id="added-skills"></p>
+            </article>
           </div>
           <div class="skill-playground" hidden>
-            <h3 id="skill-demo-title">Try the skills list</h3>
-            <p id="skill-help">Add a skill to this demo list. Your additions stay here for this visit.</p>
+            <h3>Add a skill</h3>
+            <p id="skill-help">Enter a skill to add it to the list above.</p>
             <form id="skill-form" novalidate>
               <label for="new-skill">New skill</label>
               <div class="skill-input-row">
@@ -511,7 +524,6 @@
               </div>
             </form>
             <p class="form-feedback" id="skill-feedback" role="status"></p>
-            <ul class="tag-list added-skills" id="added-skills"></ul>
           </div>
           </div>
         </div>
@@ -527,7 +539,7 @@
             </div>
           </div>
 
-          <div class="achievement-grid" id="achievements-content">
+          <div class="achievement-grid" id="achievements-content" data-collapsible-panel>
             <article class="achievement-card">
               <span class="achievement-year">Academic Award</span>
               <h3>AP Scholar</h3>
@@ -552,13 +564,14 @@
           <div>
             <p class="section-number section-number-light">08 / Contact</p>
             <h2 id="contact-title">Let's build something meaningful.</h2>
+            <button class="section-toggle" type="button" aria-expanded="true" aria-controls="contact-links contact-form-container" data-label="contact" hidden>Hide contact</button>
             <p>
               I am always interested in thoughtful engineering challenges, research
               collaborations, and opportunities to create useful technology.
             </p>
           </div>
 
-          <address class="contact-links">
+          <address class="contact-links" id="contact-links" data-collapsible-panel>
             <a href="mailto:ahmed-fawzy@aucegypt.edu">
               <span>Email</span>
               <strong>ahmed-fawzy@aucegypt.edu</strong>
@@ -581,10 +594,10 @@
             </a>
           </address>
         </div>
-        <div class="container">
+        <div class="container" id="contact-form-container" data-collapsible-panel>
           <form class="contact-form" id="contact-form" novalidate hidden>
             <h3>Get in touch</h3>
-            <p id="contact-help">Check your message below. This form validates your entries locally; to send a message, use the email link above.</p>
+            <p id="contact-help">Enter your details below to verify the required fields and email format.</p>
             <div class="form-fields">
               <div class="form-field">
                 <label for="contact-name">Name <span>(required)</span></label>
@@ -602,7 +615,7 @@
                 <p class="field-error" id="message-error"></p>
               </div>
             </div>
-            <button class="button button-primary" type="submit">Check message</button>
+            <button class="button button-primary" type="submit">Verify details</button>
             <p class="form-feedback" id="contact-feedback" role="status"></p>
           </form>
         </div>

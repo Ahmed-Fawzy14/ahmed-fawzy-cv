@@ -14,14 +14,14 @@ The published site is https://ahmed-fawzy14.github.io/ahmed-fawzy-cv/.
    checks trimmed values and email format, displays field errors, focuses the first
    invalid field, and gives success feedback. This is a local validation demo;
    it does not send or store messages. Existing contact links remain available.
-2. **Show/hide sections:** Skills and Achievements have buttons with synchronized
-   visibility, labels, and `aria-expanded` states. Both start expanded.
+2. **Show/hide sections:** All nine webpage sections have buttons with synchronized
+   visibility, labels, and `aria-expanded` states. Every section starts expanded.
 3. **Dark/light mode:** The header button switches themes and remembers the
    choice using localStorage. It also works if storage is blocked.
-4. **Dynamic skills list:** The Skills section has a demo input and Add skill
-   button. New entries appear immediately; empty values and duplicates are
-   rejected. User input is added through textContent. Additions last for the visit
-   and do not change the owner's CV.
+4. **Dynamic skills list:** The Skills section has an input and Add skill button.
+   New entries appear immediately in an Additional Skills row that matches the
+   original list, separated by middle dots. Empty values and duplicates are
+   rejected. User input is added through textContent. Additions last for the visit.
 5. **Welcome message:** JavaScript shows a dismissible inline greeting at load.
 6. **Interactive projects:** Each of the five projects has a button to reveal
    its original description without reloading the page.

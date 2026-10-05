@@ -45,10 +45,16 @@ document.querySelector("#dismiss-welcome").addEventListener("click", () => {
 
 // Options 2 and 6: keep expanded state, labels, and visibility in sync.
 function setExpanded(button, expanded) {
-  const panel = document.getElementById(button.getAttribute("aria-controls"));
-  panel.hidden = !expanded;
+  // Contact has separate links and form panels; aria-controls can name both.
+  const panelIds = button.getAttribute("aria-controls").split(/\s+/);
+  panelIds.forEach((id) => {
+    document.getElementById(id).hidden = !expanded;
+  });
   button.setAttribute("aria-expanded", String(expanded));
   button.textContent = `${expanded ? "Hide" : "Show"} ${button.dataset.label}`;
+  if (button.classList.contains("section-toggle")) {
+    button.closest("section").classList.toggle("is-collapsed", !expanded);
+  }
 }
 
 document.querySelectorAll(".section-toggle, .detail-toggle").forEach((button) => {
@@ -88,12 +94,17 @@ skillForm.addEventListener("submit", (event) => {
     return;
   }
 
-  const item = document.createElement("li");
+  const item = document.createElement("span");
+  item.className = "added-skill";
   // textContent displays user input literally, preventing HTML injection.
   item.textContent = skill;
+  if (addedSkills.childElementCount > 0) {
+    addedSkills.append(document.createTextNode(" · "));
+  }
   addedSkills.append(item);
+  document.querySelector("#additional-skills").hidden = false;
   skillNames.add(skill.toLocaleLowerCase());
-  skillFeedback.textContent = `${skill} added to the demo list.`;
+  skillFeedback.textContent = `${skill} added to the skills list.`;
   skillInput.value = "";
   skillInput.focus();
 });
@@ -142,7 +153,7 @@ contactForm.addEventListener("submit", (event) => {
     return;
   }
   contactFeedback.textContent =
-    `Thanks, ${contactFields[0].value.trim()}! Your entries are valid. No message has been sent; use the email link above to contact me.`;
+    `Thanks, ${contactFields[0].value.trim()}! Your details have been verified successfully.`;
 });
 
 contactFields.forEach((field) => {
