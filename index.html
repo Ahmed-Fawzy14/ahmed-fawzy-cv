@@ -10,6 +10,7 @@
     <meta name="theme-color" content="#4169e1">
     <title>Ahmed Fawzy Abdelkader | Computer Engineering &amp; AI</title>
     <link rel="stylesheet" href="styles.css">
+    <script src="script.js" defer></script>
   </head>
 
   <body>
@@ -22,15 +23,18 @@
           <span class="wordmark-name">Ahmed Fawzy</span>
         </a>
 
-        <nav class="site-nav" aria-label="Primary navigation">
-          <a href="#about">About</a>
-          <a href="#education">Education</a>
-          <a href="#experience">Experience</a>
-          <a href="#activities">Activities</a>
-          <a href="#projects">Projects</a>
-          <a href="#skills">Skills</a>
-          <a class="nav-cta" href="#contact">Contact</a>
-        </nav>
+        <div class="nav-controls">
+          <button class="theme-toggle" id="theme-toggle" type="button" aria-pressed="false" hidden>Dark mode</button>
+          <nav class="site-nav" aria-label="Primary navigation">
+            <a href="#about">About</a>
+            <a href="#education">Education</a>
+            <a href="#experience">Experience</a>
+            <a href="#activities">Activities</a>
+            <a href="#projects">Projects</a>
+            <a href="#skills">Skills</a>
+            <a class="nav-cta" href="#contact">Contact</a>
+          </nav>
+        </div>
       </div>
     </header>
 
@@ -38,6 +42,10 @@
       <section class="hero" id="top" aria-labelledby="hero-title">
         <div class="container hero-grid">
           <div class="hero-copy">
+            <div class="welcome-banner" id="welcome-banner" hidden>
+              <p id="welcome-message" role="status"></p>
+              <button type="button" id="dismiss-welcome" aria-label="Dismiss welcome message">&times;</button>
+            </div>
             <p class="eyebrow">Computer Engineering · Artificial Intelligence</p>
             <h1 id="hero-title">Ahmed Fawzy<br>Abdelkader</h1>
             <p class="hero-title">AI, software, and cloud engineering student</p>
@@ -305,11 +313,15 @@
               <div>
                 <p class="item-label">Thesis · TinyML · IoT Security</p>
                 <h3>TinyML-Based Intrusion Detection</h3>
-                <p>
+                <p>An intrusion-detection research project for resource-constrained IoT devices.</p>
+                <button class="detail-toggle" type="button" aria-expanded="true" aria-controls="project-details-1" data-label="project details" hidden>Hide project details</button>
+                <div class="project-details" id="project-details-1">
+                  <p>
                   Developing an anomaly-detection pipeline for resource-constrained IoT
                   microcontrollers and evaluating DSAEs, CNNs, RNNs, and classical models on
                   large-scale industrial network-flow data.
                 </p>
+                </div>
               </div>
               <div class="project-footer">
                 <ul class="tag-list">
@@ -330,10 +342,14 @@
               <div>
                 <p class="item-label">Computer Vision</p>
                 <h3>YOLO-Inspired Updates to RT-DETRv2</h3>
-                <p>
+                <p>Exploring object-detection improvements and model efficiency.</p>
+                <button class="detail-toggle" type="button" aria-expanded="true" aria-controls="project-details-2" data-label="project details" hidden>Hide project details</button>
+                <div class="project-details" id="project-details-2">
+                  <p>
                   Applied HyperACE/FullPAD enhancements and knowledge distillation, then
                   benchmarked the model on MS COCO 2017 across accuracy and performance metrics.
                 </p>
+                </div>
               </div>
               <div class="project-footer">
                 <ul class="tag-list">
@@ -352,10 +368,14 @@
               <div>
                 <p class="item-label">Systems Engineering</p>
                 <h3>Linux Process Manager</h3>
-                <p>
+                <p>A Linux tool for inspecting processes and monitoring system resources.</p>
+                <button class="detail-toggle" type="button" aria-expanded="true" aria-controls="project-details-3" data-label="project details" hidden>Hide project details</button>
+                <div class="project-details" id="project-details-3">
+                  <p>
                   Built a Linux process tool with command-line and desktop interfaces for
                   inspection, process control, and real-time CPU and memory monitoring.
                 </p>
+                </div>
               </div>
               <div class="project-footer">
                 <ul class="tag-list">
@@ -380,10 +400,14 @@
               <div>
                 <p class="item-label">Full-Stack Development</p>
                 <h3>DigiMed</h3>
-                <p>
+                <p>A full-stack platform for patient information and appointments.</p>
+                <button class="detail-toggle" type="button" aria-expanded="true" aria-controls="project-details-4" data-label="project details" hidden>Hide project details</button>
+                <div class="project-details" id="project-details-4">
+                  <p>
                   Created a medical platform for patient profiles, appointment management,
                   and medical records using a modern full-stack architecture.
                 </p>
+                </div>
               </div>
               <div class="project-footer">
                 <ul class="tag-list">
@@ -409,11 +433,15 @@
               <div>
                 <p class="item-label">AI Product Development</p>
                 <h3>Text-to-3D Platform</h3>
-                <p>
+                <p>A collaborative platform for generating images and 3D assets.</p>
+                <button class="detail-toggle" type="button" aria-expanded="true" aria-controls="project-details-5" data-label="project details" hidden>Hide project details</button>
+                <div class="project-details" id="project-details-5">
+                  <p>
                   Led a five-member AI team to deliver a web application for image generation
                   and 3D asset creation, supported by MERN APIs, automated pipelines, cloud
                   storage, and containerized services.
                 </p>
+                </div>
               </div>
               <div class="project-footer">
                 <ul class="tag-list">
@@ -440,11 +468,13 @@
           <div class="section-heading skills-heading">
             <p class="section-number">06 / Skills</p>
             <h2 id="skills-title">A versatile technical toolkit</h2>
+            <button class="section-toggle" type="button" aria-expanded="true" aria-controls="skills-content" data-label="skills" hidden>Hide skills</button>
             <p class="section-note">
               Comfortable moving from model development to product interfaces and production infrastructure.
             </p>
           </div>
 
+          <div class="skills-content" id="skills-content">
           <div class="skills-grid">
             <article class="skill-group">
               <span class="skill-number">01</span>
@@ -470,6 +500,20 @@
               <p>Docker · Kubernetes · AWS · Terraform · Jenkins · Prometheus · Grafana</p>
             </article>
           </div>
+          <div class="skill-playground" hidden>
+            <h3 id="skill-demo-title">Try the skills list</h3>
+            <p id="skill-help">Add a skill to this demo list. Your additions stay here for this visit.</p>
+            <form id="skill-form" novalidate>
+              <label for="new-skill">New skill</label>
+              <div class="skill-input-row">
+                <input id="new-skill" name="skill" type="text" maxlength="60" aria-describedby="skill-help skill-feedback" placeholder="e.g. TypeScript">
+                <button class="button button-primary" type="submit">Add skill</button>
+              </div>
+            </form>
+            <p class="form-feedback" id="skill-feedback" role="status"></p>
+            <ul class="tag-list added-skills" id="added-skills"></ul>
+          </div>
+          </div>
         </div>
       </section>
 
@@ -479,10 +523,11 @@
             <div>
               <p class="section-number">07 / Achievements</p>
               <h2 id="achievements-title">Milestones &amp; recognition</h2>
+              <button class="section-toggle" type="button" aria-expanded="true" aria-controls="achievements-content" data-label="achievements" hidden>Hide achievements</button>
             </div>
           </div>
 
-          <div class="achievement-grid">
+          <div class="achievement-grid" id="achievements-content">
             <article class="achievement-card">
               <span class="achievement-year">Academic Award</span>
               <h3>AP Scholar</h3>
@@ -535,6 +580,31 @@
               <span class="contact-arrow" aria-hidden="true">↗</span>
             </a>
           </address>
+        </div>
+        <div class="container">
+          <form class="contact-form" id="contact-form" novalidate hidden>
+            <h3>Get in touch</h3>
+            <p id="contact-help">Check your message below. This form validates your entries locally; to send a message, use the email link above.</p>
+            <div class="form-fields">
+              <div class="form-field">
+                <label for="contact-name">Name <span>(required)</span></label>
+                <input id="contact-name" name="name" type="text" autocomplete="name" maxlength="100" required aria-describedby="name-error">
+                <p class="field-error" id="name-error"></p>
+              </div>
+              <div class="form-field">
+                <label for="contact-email">Email <span>(required)</span></label>
+                <input id="contact-email" name="email" type="email" autocomplete="email" maxlength="254" required aria-describedby="email-error">
+                <p class="field-error" id="email-error"></p>
+              </div>
+              <div class="form-field form-field-wide">
+                <label for="contact-message">Message <span>(required)</span></label>
+                <textarea id="contact-message" name="message" rows="5" maxlength="3000" required aria-describedby="message-error contact-help"></textarea>
+                <p class="field-error" id="message-error"></p>
+              </div>
+            </div>
+            <button class="button button-primary" type="submit">Check message</button>
+            <p class="form-feedback" id="contact-feedback" role="status"></p>
+          </form>
         </div>
       </section>
     </main>
