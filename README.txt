@@ -20,7 +20,7 @@ Shared styles.css and script.js retain themes, welcome dismissal, section and
 project toggles, skill validation, and contact validation. Features initialize
 only on the pages that contain their controls. The theme choice persists across
 pages using the existing cv-theme localStorage key. Contact verifies fields
-locally; it does not deliver messages. Added skills last for the current visit.
+locally; it does not deliver messages. Added skills persist across navigation in the same browser tab/session.
 
 API INTEGRATIONS (api.js)
 1. Quotes: https://dummyjson.com/quotes/random
@@ -59,7 +59,7 @@ textContent; links allow only HTTP/HTTPS. No simulated results are shipped.
 
 FILES
 Six HTML pages; styles.css; script.js; api.js; images/; assets/; link.txt;
-this README.txt. No external frontend libraries or build dependencies.
+this README.txt; SPEC.md. No external frontend libraries or build dependencies.
 
 VALIDATION
 Automated local browser checks passed on 26 October 2026:
@@ -81,3 +81,13 @@ Netlify, for example) so all six HTML files and assets share a directory.
 Live portfolio: https://ahmed-fawzy14.github.io/ahmed-fawzy-cv/
 Deployed to the existing GitHub Pages repository for Assignment 3.
 link.txt contains this published website URL.
+
+UI/UX REVIEW - 26 October 2026
+Active-page navigation pills, 44px navigation touch targets, consistent mobile
+menu grid, in-page shortcuts, page descriptions, source labels on news cards,
+loading feedback, retained results after failed refresh, and skip-link contrast
+improvements. Added skills survive page navigation using sessionStorage.
+SPEC.md documents requirements, API contracts, states, limitations, and checks.
+Additional checks cover CV text and asset preservation, local links, 320/390/768/1440px
+layouts, keyboard skip navigation, print, reduced motion, no-JavaScript content,
+request timeout, and all four widget error/retry paths.

@@ -34,6 +34,7 @@
       return await response.json();
     } catch (error) {
       if (error.name === "AbortError") throw new Error("The request took too long. Please try again.");
+      if (error instanceof SyntaxError) throw new Error("The service returned unreadable data. Please try again.");
       throw error;
     } finally { clearTimeout(timeout); }
   }
@@ -103,7 +104,12 @@
         heading.append(externalLink(story.title, story.url || `https://news.ycombinator.com/item?id=${encodeURIComponent(story.objectID)}`));
         const date = new Date(story.created_at);
         const stamp = Number.isNaN(date.getTime()) ? "Date unavailable" : date.toLocaleDateString(undefined, { year: "numeric", month: "short", day: "numeric" });
-        card.append(heading, text("p", `${stamp} · ${Number(story.points) || 0} points`, "live-meta"),
+        let source = "Hacker News discussion";
+        try {
+          const address = new URL(story.url);
+          if (["http:", "https:"].includes(address.protocol)) source = address.hostname.replace(/^www\./, "");
+        } catch { /* Discussion-only stories do not have a source URL. */ }
+        card.append(text("p", source, "news-source"), heading, text("p", `${stamp} · ${Number(story.points) || 0} points`, "live-meta"),
           externalLink("Discuss on Hacker News ↗", `https://news.ycombinator.com/item?id=${encodeURIComponent(story.objectID)}`));
         results.append(card);
       }
@@ -116,13 +122,15 @@
     const results = panel.querySelector(".api-results");
     const select = panel.querySelector("select");
     const normalLabel = button.textContent;
+    const label = { github: "repositories", quotes: "quote", weather: "weather", news: "news" }[panel.dataset.api];
     async function load() {
       if (button.disabled) return;
       button.disabled = true;
       if (select) select.disabled = true;
       status.classList.remove("is-error");
-      status.textContent = `Loading ${panel.dataset.api === "github" ? "repositories" : panel.dataset.api}…`;
-      results.replaceChildren();
+      panel.classList.add("is-loading");
+      status.textContent = `Loading ${label}…`;
+      button.textContent = "Loading…";
       results.setAttribute("aria-busy", "true");
       try {
         // Render off-DOM so invalid payloads cannot leave partially rendered results.
@@ -134,8 +142,10 @@
       } catch (error) {
         status.classList.add("is-error");
         status.textContent = error instanceof TypeError ? "Unable to connect. Check your connection and try again." : error.message;
-        button.textContent = `Retry ${panel.dataset.api === "github" ? "repositories" : panel.dataset.api}`;
+        if (results.childElementCount) status.textContent += " Previously loaded data is still shown below.";
+        button.textContent = `Retry ${label}`;
       } finally {
+        panel.classList.remove("is-loading");
         results.setAttribute("aria-busy", "false");
         button.disabled = false;
         if (select) select.disabled = false;

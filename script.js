@@ -75,12 +75,37 @@ const skillForm = document.querySelector("#skill-form");
 const skillInput = document.querySelector("#new-skill");
 const skillFeedback = document.querySelector("#skill-feedback");
 const addedSkills = document.querySelector("#added-skills");
+const sessionSkillsKey = "portfolio-added-skills";
+const sessionSkills = [];
 const skillNames = new Set(
   Array.from(document.querySelectorAll(".skill-group p"))
     .flatMap((paragraph) => paragraph.textContent.split("·"))
     .map((skill) => skill.trim().toLocaleLowerCase())
 );
 document.querySelector(".skill-playground").hidden = false;
+
+function addSkill(skill) {
+  const item = document.createElement("span");
+  item.className = "added-skill";
+  // textContent displays user input literally, preventing HTML injection.
+  item.textContent = skill;
+  if (addedSkills.childElementCount > 0) {
+    addedSkills.append(document.createTextNode(" · "));
+  }
+  addedSkills.append(item);
+  document.querySelector("#additional-skills").hidden = false;
+  skillNames.add(skill.toLocaleLowerCase());
+}
+
+try {
+  const stored = JSON.parse(sessionStorage.getItem(sessionSkillsKey) || "[]");
+  if (Array.isArray(stored)) stored.slice(0, 100).forEach(skill => {
+    if (typeof skill === "string" && skill.trim() && skill.length <= 60 && !skillNames.has(skill.toLocaleLowerCase())) {
+      addSkill(skill);
+      sessionSkills.push(skill);
+    }
+  });
+} catch { /* Keep skills usable when storage is blocked or corrupted. */ }
 
 skillForm.addEventListener("submit", (event) => {
   event.preventDefault();
@@ -98,16 +123,9 @@ skillForm.addEventListener("submit", (event) => {
     return;
   }
 
-  const item = document.createElement("span");
-  item.className = "added-skill";
-  // textContent displays user input literally, preventing HTML injection.
-  item.textContent = skill;
-  if (addedSkills.childElementCount > 0) {
-    addedSkills.append(document.createTextNode(" · "));
-  }
-  addedSkills.append(item);
-  document.querySelector("#additional-skills").hidden = false;
-  skillNames.add(skill.toLocaleLowerCase());
+  addSkill(skill);
+  sessionSkills.push(skill);
+  try { sessionStorage.setItem(sessionSkillsKey, JSON.stringify(sessionSkills)); } catch { /* Storage is optional. */ }
   skillFeedback.textContent = `${skill} added to the skills list.`;
   skillInput.value = "";
   skillInput.focus();
