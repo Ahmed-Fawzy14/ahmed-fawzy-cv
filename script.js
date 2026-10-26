@@ -33,6 +33,7 @@ themeButton.addEventListener("click", () => {
   }
 });
 
+if (document.querySelector("#welcome-banner")) {
 // Option 5: show a non-blocking welcome message when the page loads.
 const welcomeBanner = document.querySelector("#welcome-banner");
 document.querySelector("#welcome-message").textContent =
@@ -42,6 +43,8 @@ document.querySelector("#dismiss-welcome").addEventListener("click", () => {
   welcomeBanner.hidden = true;
   document.querySelector(".hero-actions a").focus({ preventScroll: true });
 });
+
+}
 
 // Options 2 and 6: keep expanded state, labels, and visibility in sync.
 function setExpanded(button, expanded) {
@@ -66,6 +69,7 @@ document.querySelectorAll(".section-toggle, .detail-toggle").forEach((button) =>
   });
 });
 
+if (document.querySelector("#skill-form")) {
 // Option 4: add skills safely as text, rejecting blanks and duplicates.
 const skillForm = document.querySelector("#skill-form");
 const skillInput = document.querySelector("#new-skill");
@@ -115,6 +119,9 @@ skillInput.addEventListener("input", () => {
   skillFeedback.classList.remove("is-error");
 });
 
+}
+
+if (document.querySelector("#contact-form")) {
 // Option 1: validate required values and email format with per-field feedback.
 const contactForm = document.querySelector("#contact-form");
 const contactFeedback = document.querySelector("#contact-feedback");
@@ -163,3 +170,5 @@ contactFields.forEach((field) => {
     if (contactAttempted) validateField(field);
   });
 });
+
+}

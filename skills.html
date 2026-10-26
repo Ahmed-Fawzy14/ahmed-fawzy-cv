@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta
+      name="description"
+      content="The professional portfolio and curriculum vitae of Ahmed Fawzy Abdelkader, a Computer Engineering student specializing in Artificial Intelligence."
+    >
+    <meta name="theme-color" content="#4169e1">
+    <title>Skills | Ahmed Fawzy Abdelkader</title>
+    <link rel="stylesheet" href="styles.css">
+    <script src="script.js" defer></script>
+    <script src="api.js" defer></script>
+  </head>
+
+  <body>
+    <a class="skip-link" href="#main-content">Skip to main content</a>
+
+    <header class="site-header">
+      <div class="container nav-wrap">
+        <a class="wordmark" href="index.html" aria-label="Ahmed Fawzy Abdelkader - Home">
+          <span class="wordmark-mark" aria-hidden="true">AF</span>
+          <span class="wordmark-name">Ahmed Fawzy</span>
+        </a>
+
+        <div class="nav-controls">
+          <button class="theme-toggle" id="theme-toggle" type="button" aria-pressed="false" hidden>Dark mode</button>
+          <nav class="site-nav" aria-label="Primary navigation"><a href="index.html">Home</a>
+<a href="experience.html">Experience</a>
+<a href="projects.html">Projects</a>
+<a href="skills.html" aria-current="page">Skills</a>
+<a href="insights.html">Insights</a>
+<a href="contact.html" class="nav-cta">Contact</a></nav>
+        </div>
+      </div>
+    </header>
+
+    <main id="main-content"><div class="page-intro container" id="top"><p class="eyebrow">Ahmed Fawzy / Portfolio</p><h1>Skills</h1><p>The tools I use to turn ideas into working systems.</p></div><section class="section" id="skills" aria-labelledby="skills-title">
+        <div class="container skills-layout">
+          <div class="section-heading skills-heading">
+            <p class="section-number">06 / Skills</p>
+            <h2 id="skills-title">A versatile technical toolkit</h2>
+            <button class="section-toggle" type="button" aria-expanded="true" aria-controls="skills-content" data-label="skills" hidden>Hide skills</button>
+            <p class="section-note">
+              Comfortable moving from model development to product interfaces and production infrastructure.
+            </p>
+          </div>
+
+          <div class="skills-content" id="skills-content" data-collapsible-panel>
+          <div class="skills-grid">
+            <article class="skill-group">
+              <span class="skill-number">01</span>
+              <h3>Languages</h3>
+              <p>Python · JavaScript · Rust · C/C++ · SQL · HTML/CSS · Bash</p>
+            </article>
+
+            <article class="skill-group">
+              <span class="skill-number">02</span>
+              <h3>AI &amp; Machine Learning</h3>
+              <p>TensorFlow · PyTorch · scikit-learn · TinyML · pandas · NumPy</p>
+            </article>
+
+            <article class="skill-group">
+              <span class="skill-number">03</span>
+              <h3>Web &amp; Mobile</h3>
+              <p>React · Django · Flask · Node.js · MongoDB · REST APIs</p>
+            </article>
+
+            <article class="skill-group">
+              <span class="skill-number">04</span>
+              <h3>DevOps &amp; Cloud</h3>
+              <p>Docker · Kubernetes · AWS · Terraform · Jenkins · Prometheus · Grafana</p>
+            </article>
+            <article class="skill-group" id="additional-skills" hidden>
+              <span class="skill-number">05</span>
+              <h3>Additional Skills</h3>
+              <p id="added-skills"></p>
+            </article>
+          </div>
+          <div class="skill-playground" hidden>
+            <h3>Add a skill</h3>
+            <p id="skill-help">Enter a skill to add it to the list above.</p>
+            <form id="skill-form" novalidate>
+              <label for="new-skill">New skill</label>
+              <div class="skill-input-row">
+                <input id="new-skill" name="skill" type="text" maxlength="60" aria-describedby="skill-help skill-feedback" placeholder="e.g. TypeScript">
+                <button class="button button-primary" type="submit">Add skill</button>
+              </div>
+            </form>
+            <p class="form-feedback" id="skill-feedback" role="status"></p>
+          </div>
+          </div>
+        </div>
+      </section></main><footer class="site-footer">
+      <div class="container footer-content">
+        <p>© 2026 Ahmed Fawzy Abdelkader</p>
+        <a href="#top">Back to top ↑</a>
+      </div>
+    </footer>
+  </body>
+</html>
